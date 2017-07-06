@@ -1,0 +1,87 @@
+{
+   "status":"ok",
+   "source":"hacker-news",
+   "sortBy":"top",
+   "articles":[
+      {
+         "author":"MayImilae",
+         "title":"Dolphin Emulator",
+         "description":"June was a month where a lot of important features were merged, but few of them had to do with actual emulation. Every emulator has its own philosophy and goals. While the primary goal is *usually* to emulate the console at hand, many emulators place secondary goals on various features...",
+         "url":"https://dolphin-emu.org/blog/2017/07/01/dolphin-progress-report-june-2017/",
+         "urlToImage":"https://sphotos-a.ak.fbcdn.net/hphotos-ak-prn1/73367_365599063538538_1010982140_n.png",
+         "publishedAt":null
+      },
+      {
+         "author":null,
+         "title":"Saved by Alice",
+         "description":"In Alice v. CLS Bank, the Supreme Court ruled that an abstract idea does not become eligible for a patent simply by being implemented on a generic computer. This 2014 decision has significantly reduced the harm caused by vague and overbroad software patents. Before Alice, patent owners who had...",
+         "url":"https://www.eff.org/alice",
+         "urlToImage":"http://www.eff.org//files/styles/resized_banner/public/alice-3_1.jpg",
+         "publishedAt":"2017-06-29T23:18:44Z"
+      },
+      {
+         "author":"William Alden",
+         "title":"There's A Fight Brewing Between The NYPD And Silicon Valley",
+         "description":"Big data helped New York's cops bust Bobby Shmurda. But as the NYPD's contract with tech giant Palantir comes to an end, things could get messy.",
+         "url":"https://www.buzzfeed.com/williamalden/theres-a-fight-brewing-between-the-nypd-and-silicon-valley",
+         "urlToImage":"https://img.buzzfeed.com/buzzfeed-static/static/2017-06/26/21/enhanced/buzzfeed-prod-fastlane-02/original-17273-1498526572-4.jpg?crop=1543:808;21,45",
+         "publishedAt":null
+      },
+      {
+         "author":"mitnk",
+         "title":"mitnk/cicada",
+         "description":"cicada - A simple Unix shell written in Rust",
+         "url":"https://github.com/mitnk/cicada",
+         "urlToImage":"https://avatars3.githubusercontent.com/u/177049?v=3&s=400",
+         "publishedAt":null
+      },
+      {
+         "author":null,
+         "title":"Dissecting objc_msgSend on ARM64",
+         "description":null,
+         "url":"https://www.mikeash.com/pyblog/friday-qa-2017-06-30-dissecting-objc_msgsend-on-arm64.html",
+         "urlToImage":null,
+         "publishedAt":null
+      },
+      {
+         "author":"Katie Benner",
+         "title":"Women in Tech Speak Frankly on Culture of Harassment",
+         "description":"More than two dozen women in the tech start-up industry spoke to The New York Times about being sexually harassed by investors and mentors.",
+         "url":"https://www.nytimes.com/2017/06/30/technology/women-entrepreneurs-speak-out-sexual-harassment.html",
+         "urlToImage":"https://static01.nyt.com/images/2017/07/01/us/01VALLEYWOMEN1/01VALLEYWOMEN1-facebookJumbo-v2.jpg",
+         "publishedAt":"2017-07-01T06:04:54Z"
+      },
+      {
+         "author":"Alex Williams",
+         "title":"Prozac Nation Is Now the United States of Xanax",
+         "description":"How we went from depressive flannel and fog to anxiously monitoring our heart rates, twirling fidget spinners and streaming into meditation studios.",
+         "url":"https://www.nytimes.com/2017/06/10/style/anxiety-is-the-new-depression-xanax.html",
+         "urlToImage":"https://static01.nyt.com/images/2017/06/11/fashion/11CVANXIETY/11CVANXIETY-facebookJumbo.jpg",
+         "publishedAt":"2017-06-13T13:08:38Z"
+      },
+      {
+         "author":"",
+         "title":"Why We Chose Typescript",
+         "description":"Niranjan Ramadas (u/nr4madas) Engineering Manager Earlier this year, our CEO, Steve, <a href=\"https://www.reddit.co",
+         "url":"http://redditblog.com/2017/06/30/why-we-chose-typescript/",
+         "urlToImage":"https://i0.wp.com/redditupvoted.files.wordpress.com/2017/06/typescript-header.png?crop=0px%2C0px%2C1904px%2C1000px&resize=600%2C315&ssl=1",
+         "publishedAt":null
+      },
+      {
+         "author":"",
+         "title":"What is a File? - Microsoft Research",
+         "description":"For over 40 years the notion of the file, as devised by pioneers in the field of computing, has proved robust and has remained unchallenged. Yet this concept is not a given, but serves as a boundary object between users and engineers. In the current landscape, this boundary is showing signs of slippage, and we …",
+         "url":"https://www.microsoft.com/en-us/research/publication/what-is-a-file/",
+         "urlToImage":null,
+         "publishedAt":null
+      },
+      {
+         "author":null,
+         "title":"Current Openings - People.ai",
+         "description":"Browse current career opportunities and apply online for jobs at People.ai",
+         "url":"https://peopleai.workable.com/",
+         "urlToImage":"https://www.workable.com/assets/facebook-preview.png",
+         "publishedAt":null
+      }
+   ]
+}

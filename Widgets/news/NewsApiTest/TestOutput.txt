@@ -1,0 +1,71 @@
+﻿Generated GET URL: https://newsapi.org/v1/articles?source=hacker-news&apiKey=
+
+Story 1 Info
+====================
+Author: MayImilae
+Title: Dolphin Emulator
+Description: June was a month where a lot of important features were merged, but few of them had to do with actual emulation. Every emulator has its own philosophy and goals. While the primary goal is *usually* to emulate the console at hand, many emulators place secondary goals on various features...
+Story URL: https://dolphin-emu.org/blog/2017/07/01/dolphin-progress-report-june-2017/
+
+Story 2 Info
+====================
+Author: None
+Title: Saved by Alice
+Description: In Alice v. CLS Bank, the Supreme Court ruled that an abstract idea does not become eligible for a patent simply by being implemented on a generic computer. This 2014 decision has significantly reduced the harm caused by vague and overbroad software patents. Before Alice, patent owners who had...
+Story URL: https://www.eff.org/alice
+
+Story 3 Info
+====================
+Author: William Alden
+Title: There's A Fight Brewing Between The NYPD And Silicon Valley
+Description: Big data helped New York's cops bust Bobby Shmurda. But as the NYPD's contract with tech giant Palantir comes to an end, things could get messy.
+Story URL: https://www.buzzfeed.com/williamalden/theres-a-fight-brewing-between-the-nypd-and-silicon-valley
+
+Story 4 Info
+====================
+Author: mitnk
+Title: mitnk/cicada
+Description: cicada - A simple Unix shell written in Rust
+Story URL: https://github.com/mitnk/cicada
+
+Story 5 Info
+====================
+Author: None
+Title: Dissecting objc_msgSend on ARM64
+Description: None
+Story URL: https://www.mikeash.com/pyblog/friday-qa-2017-06-30-dissecting-objc_msgsend-on-arm64.html
+
+Story 6 Info
+====================
+Author: Katie Benner
+Title: Women in Tech Speak Frankly on Culture of Harassment
+Description: More than two dozen women in the tech start-up industry spoke to The New York Times about being sexually harassed by investors and mentors.
+Story URL: https://www.nytimes.com/2017/06/30/technology/women-entrepreneurs-speak-out-sexual-harassment.html
+
+Story 7 Info
+====================
+Author: Alex Williams
+Title: Prozac Nation Is Now the United States of Xanax
+Description: How we went from depressive flannel and fog to anxiously monitoring our heart rates, twirling fidget spinners and streaming into meditation studios.
+Story URL: https://www.nytimes.com/2017/06/10/style/anxiety-is-the-new-depression-xanax.html
+
+Story 8 Info
+====================
+Author: None
+Title: Why We Chose Typescript
+Description: Niranjan Ramadas (u/nr4madas) Engineering Manager Earlier this year, our CEO, Steve, <a href="https://www.reddit.co
+Story URL: http://redditblog.com/2017/06/30/why-we-chose-typescript/
+
+Story 9 Info
+====================
+Author: None
+Title: What is a File? - Microsoft Research
+Description: For over 40 years the notion of the file, as devised by pioneers in the field of computing, has proved robust and has remained unchallenged. Yet this concept is not a given, but serves as a boundary object between users and engineers. In the current landscape, this boundary is showing signs of slippage, and we …
+Story URL: https://www.microsoft.com/en-us/research/publication/what-is-a-file/
+
+Story 10 Info
+====================
+Author: None
+Title: Current Openings - People.ai
+Description: Browse current career opportunities and apply online for jobs at People.ai
+Story URL: https://peopleai.workable.com/
