@@ -1,20 +1,23 @@
 public void clockDraw(PApplet appc, GWinData data) {
-  int cx, cy;
+  float cx, cy;
   float secondsRadius;
   float minutesRadius;
   float hoursRadius;
   float clockDiameter;
+  PFont digitalClock = createFont("fonts/DigitalClock.ttf", 48, false);
+  String digitalReadout = hour() + ":0" + minute();
+  
   
   clockWindow.stroke(255);
   
-  int radius = min(clockWindow.width, clockWindow.height) / 2;
+  float radius = min(clockWindow.width, clockWindow.height) / 2.3;
   secondsRadius = radius * 0.72;
   minutesRadius = radius * 0.60;
   hoursRadius = radius * 0.50;
   clockDiameter = radius * 1.8;
   
   cx = clockWindow.width / 2;
-  cy = clockWindow.height / 2;
+  cy = clockWindow.height / 2.3;
   
   clockWindow.background(0);
   
@@ -48,4 +51,15 @@ public void clockDraw(PApplet appc, GWinData data) {
     clockWindow.vertex(x, y);
   }
   clockWindow.endShape();
+  
+  if (minute() < 10) {
+    digitalReadout = hour() + ":0" + minute();
+  } else {
+    digitalReadout = hour() + ":" + minute();
+  }
+  
+  clockWindow.textFont(digitalClock,clockWindow.height*0.08);
+  clockWindow.fill(#ffffff);
+  clockWindow.textAlign(CENTER, BOTTOM);
+  clockWindow.text(digitalReadout,clockWindow.width/2,clockWindow.height*0.95);
 }
