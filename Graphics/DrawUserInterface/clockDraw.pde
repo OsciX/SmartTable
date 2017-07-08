@@ -52,13 +52,23 @@ public void clockDraw(PApplet appc, GWinData data) {
   }
   clockWindow.endShape();
   
-  if (minute() < 10) {
-    digitalReadout = hour() + ":0" + minute();
+  int formattedHour = 0;
+  String amPm = "";
+  if (hour() > 12) {
+    formattedHour = hour() - 12;
+    amPm = " PM";
   } else {
-    digitalReadout = hour() + ":" + minute();
+    formattedHour = hour();
+    amPm = " AM";
   }
   
-  clockWindow.textFont(digitalClock,clockWindow.height*0.08);
+  if (minute() < 10) {
+    digitalReadout = formattedHour + ":0" + minute() + " PM";
+  } else {
+    digitalReadout = formattedHour + ":" + minute() + " PM";
+  }
+  
+  clockWindow.textSize(clockWindow.height*0.08);
   clockWindow.fill(#ffffff);
   clockWindow.textAlign(CENTER, BOTTOM);
   clockWindow.text(digitalReadout,clockWindow.width/2,clockWindow.height*0.95);

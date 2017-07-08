@@ -1,19 +1,15 @@
-/*
 import java.util.Timer;
 import java.util.TimerTask;
 
 static Boolean DEBUG = false;
 static String darkSkyApiKey = "";
 
-FIOCurrently currentData;
-FIODataPoint currentWeather;
-
 class weatherApiCall extends TimerTask {
   public void run() {
     ForecastIO fio = new ForecastIO(darkSkyApiKey);
     fio.setUnits(ForecastIO.UNITS_US);
     fio.setLang(ForecastIO.LANG_ENGLISH);
-    GeoCoords currentLocation = getCoords();
+    currentLocation = getCoords();
 
     if (DEBUG) {
       fio.getForecast(loadStrings("data/UnformattedTestResponse.json")[0]);
@@ -24,18 +20,20 @@ class weatherApiCall extends TimerTask {
     currentData = new FIOCurrently(fio);
     currentWeather = currentData.get();
 
+    svgLoaded = false;
+    /*
     // FIODataPoint returns strings with an extra set of quotation marks. By appending .replaceAll("\"","") to a request, these are removed.
-    String formattedSummary = currentWeather.summary().replaceAll("\"", "");
-    String formattedIconName = currentWeather.icon().replaceAll("\"", "");
-    
-    println("\nCurrent Data as of " + currentWeather.time());
-    println("Summary: " + formattedSummary); 
-    println("Temperature: " + currentWeather.temperature() + "° F");
-    println("Displayed Icon: " + formattedIconName);
-    println("Location: " + currentLocation.city() + ", " + currentLocation.regionCode());
+     String formattedSummary = currentWeather.summary().replaceAll("\"", "");
+     String formattedIconName = currentWeather.icon().replaceAll("\"", "");
+     
+     println("\nCurrent Data as of " + currentWeather.time());
+     println("Summary: " + formattedSummary); 
+     println("Temperature: " + currentWeather.temperature() + "° F");
+     println("Displayed Icon: " + formattedIconName);
+     println("Location: " + currentLocation.city() + ", " + currentLocation.regionCode());
+     */
   }
 }
-
 
 
 final class GeoCoords {
@@ -65,6 +63,7 @@ final class GeoCoords {
   }
 }
 
+
 GeoCoords getCoords() {
   JSONObject ipLocation = loadJSONObject("http://www.freegeoip.net/json/");
   float currentLat = ipLocation.getFloat("latitude");
@@ -73,4 +72,3 @@ GeoCoords getCoords() {
   String regionCode = ipLocation.getString("region_code");
   return new GeoCoords(str(currentLat), str(currentLong), city, regionCode);
 }
-*/
