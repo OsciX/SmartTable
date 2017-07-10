@@ -16,7 +16,7 @@ public void weatherDraw(PApplet appc, GWinData data) {
   weatherWindow.background(0);
 
   try {
-    svgPath = "svg/" + currentWeather.icon().replaceAll("\"", "") + ".svg";
+    svgPath = "data/svg/" + currentWeather.icon().replaceAll("\"", "") + ".svg";
     formattedSummary = currentWeather.summary().replaceAll("\"", "");
     formattedLocation = currentLocation.city() + ", " + currentLocation.regionCode();
     temperature = (double)Math.round(currentWeather.temperature()*10)/10;

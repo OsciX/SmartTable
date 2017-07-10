@@ -4,7 +4,6 @@ public void clockDraw(PApplet appc, GWinData data) {
   float minutesRadius;
   float hoursRadius;
   float clockDiameter;
-  PFont digitalClock = createFont("fonts/DigitalClock.ttf", 48, false);
   String digitalReadout = hour() + ":0" + minute();
   
   
