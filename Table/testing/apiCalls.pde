@@ -3,18 +3,13 @@ import org.joda.time.*;
 import com.temboo.core.*;
 import com.temboo.Library.Google.Calendar.*;
 
-<<<<<<< Updated upstream
-static String darkSkyApiKey = "";
-static String newsApiKey = "";
-// Create session using your Temboo account application details
-TembooSession session = new TembooSession("ACCOUNT_NAME", "APP_NAME", "KEY");
-
-
-static Boolean DEBUG = false;
-=======
-static Boolean DEBUG = false;
 static String darkSkyApiKey = "77c70449e845cbccd09b1ab2112d01c9";
->>>>>>> Stashed changes
+static String newsApiKey = "32ee148a68a04751bcb6eeff06c2d399";
+// Create session using your Temboo account application details
+TembooSession session = new TembooSession("trialaccount555", "myFirstApp", "IXkdDk8iPDfqESMbWTi0FDFPwnsmFhq8");
+
+
+static Boolean DEBUG = false;
 
 class weatherApiCall extends TimerTask {
   public void run() {

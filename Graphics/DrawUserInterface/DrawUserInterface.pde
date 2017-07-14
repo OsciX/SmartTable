@@ -2,8 +2,13 @@ import g4p_controls.*;
 
 GWindow clockWindow, weatherWindow, calendarWindow, newsWindow;
 public void setup() {
+<<<<<<< Updated upstream
 
   fullScreen();
+=======
+  
+ // fullScreen();
+>>>>>>> Stashed changes
   createWindows();
   createTimers();
 
