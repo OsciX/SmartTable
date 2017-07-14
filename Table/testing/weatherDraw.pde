@@ -38,11 +38,11 @@ public void weatherDraw(PApplet appc, GWinData data) {
   weatherWindow.textSize(weatherWindow.height*0.07);
   weatherWindow.textAlign(TOP);
   weatherWindow.textAlign(CENTER);
-  weatherWindow.text(textToDisplay, weatherWindow.width/2, 2*weatherWindow.height/3);
+  weatherWindow.text(textToDisplay, int(weatherWindow.width/2), int(2*weatherWindow.height/3));
   
   weatherIcon.disableStyle();
   weatherWindow.shapeMode(CENTER);
-  weatherWindow.shape(weatherIcon, weatherWindow.width/2, weatherWindow.height/3, min(weatherWindow.width/2.5,weatherWindow.height/2.5), min(weatherWindow.width/2.5,weatherWindow.height/2.5));
+  weatherWindow.shape(weatherIcon, int(weatherWindow.width/2), int(weatherWindow.height/3), min(int(weatherWindow.width*5/2),int(weatherWindow.height/2.5)), min(int(weatherWindow.width/2.5),int(weatherWindow.height/2.5)));
   
 
   /*

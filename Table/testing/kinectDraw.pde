@@ -8,9 +8,9 @@ public void kinectDraw(PApplet appc, GWinData data) {
     projectWidth = (abs(secondCorner%640 - firstCorner%640)); //sets width of projection
     projectHeight = (abs((firstCorner-(firstCorner%640))/640 - (secondCorner-(secondCorner%640))/640)); //sets height of projection
     uiX = 2*kinectX + offsetX;
-    uiY = int(2.1333*kinectY+offsetY);
+    uiY = int(2*kinectY+offsetY);
     uiWidth = 2*projectWidth;
-    uiHeight = int(2.1333*projectHeight);
+    uiHeight = int(2*projectHeight);
       kinectWindow.fill(#ffffff, 0);
      kinectWindow.stroke(#00ff00);
      kinectWindow.rect(kinectX, kinectY, projectWidth, projectHeight); //draws rectangle where projection is defined 

@@ -11,7 +11,7 @@ IntList clockPixels = new IntList();
 IntList weatherPixels = new IntList();
 IntList calendarPixels = new IntList();
 IntList newsPixels = new IntList();
-int minSize = 140;
+int minSize = 155;
 int uiX;
 int uiY;
 int kinectX;
@@ -47,6 +47,7 @@ int projectHeight; //projection width
 int movingWidgetWidth;
 int movingWidgetHeight;
 
+
 char movingWidget;
 //widget sizes
 
@@ -74,7 +75,7 @@ void setup() {
   fullScreen(2); //draw screen kinect sized
   kinect = new Kinect(this);
   kinect.initDepth();
-  kinect.enableMirror(false);
+  kinect.enableMirror(true);
 
   background(#000000);
   LibSansBold = createFont("data/LiberationSans-Bold.ttf", 32);
@@ -85,10 +86,22 @@ void setup() {
   calendarWindow.textFont(LibSansBold);
   clockWindow.textFont(LibSansBold);
   newsWindow.textFont(LibSansBold);
+  
+      println("Starting");
+    arrayCopy(kinect.getRawDepth(), depthValue); 
+    clockWindow.setVisible(false);
+    weatherWindow.setVisible(false);
+    calendarWindow.setVisible(false);
+    newsWindow.setVisible(false);
+    first = true;
+    true1 = false;
+    true2 = false;   //pressing Space creates an array of pixels that show change in depth, resets screen
+    true3 = false;
 } // declares new kinect and activates depth camera
 
 
 void keyPressed() {
+
   if (key == ' ') {
     println("Starting");
     arrayCopy(kinect.getRawDepth(), depthValue); 
@@ -101,6 +114,7 @@ void keyPressed() {
     true2 = false;   //pressing Space creates an array of pixels that show change in depth, resets screen
     true3 = false;
   }
+  
   if (key == '1') {
     println("Drawing first corner");
     arrayCopy(kinect.getRawDepth(), calibrationCompare); 
@@ -129,15 +143,13 @@ void keyPressed() {
   } //draws an ellipse at the location of a change in depth, ideally a person's hand. Starts at the bottom right corner and goes up to the left
 
   if (key == '3') {
-    firstCorner = 11610;
-    secondCorner = 149700;
+    firstCorner = 11630;
+    secondCorner = 149680;
     true1 = true;
     true2 = true;
   }
 } 
 //used to designate a rectangular screen without using your hands for calibration
-
-
 void draw() {
   //PImage depthImage = kinect.getDepthImage();
   //image(depthImage, 0, 0); //shows image of table 
@@ -365,17 +377,17 @@ void draw() {
         newsInfo[3] = newsInfo[1] + newsInfo[7]*640;
       }
       clockWindow.getSurface().setSize(clockInfo[6], clockInfo[7]);
-      clockWindow.setLocation(1920+clockInfo[4], clockInfo[5]);
+      setLocationSmooth(clockWindow.getSurface(), 1920+clockInfo[4], clockInfo[5], 500);
       clockWindow.setVisible(true);
       getUsedPixels();
       weatherWindow.getSurface().setSize(weather1Info[6], weather1Info[7]);
-      weatherWindow.setLocation(1920+weather1Info[4], weather1Info[5]);
+      setLocationSmooth(weatherWindow.getSurface(), 1920+weather1Info[4], weather1Info[5], 500);
       weatherWindow.setVisible(true);
       calendarWindow.getSurface().setSize(calendarInfo[6], calendarInfo[7]);
-      calendarWindow.setLocation(1920+calendarInfo[4], calendarInfo[5]);
+      setLocationSmooth(calendarWindow.getSurface(), 1920+calendarInfo[4], calendarInfo[5], 500);
       calendarWindow.setVisible(true);
       newsWindow.getSurface().setSize(newsInfo[6], newsInfo[7]);
-      newsWindow.setLocation(1920+newsInfo[4], newsInfo[5]);
+      setLocationSmooth(newsWindow.getSurface(), 1920+newsInfo[4], newsInfo[5], 500);
       newsWindow.setVisible(true);
       true3 = true;
     }
@@ -386,13 +398,11 @@ void draw() {
     for (int i = kinectY; i < (projectHeight +kinectY); i+= 5) {
       for (int j = kinectX; j < (projectWidth + kinectX); j+= 20) {
         if ((abs(newDepthValue[j + i*640] - depthValue[j + i*640]) > 20) && ((abs(newDepthValue[j+10 + i*640] - depthValue[j+10 + i*640]) > 20) || (abs(newDepthValue[j-10 + i*640] - depthValue[j-10 + i*640]) > 20) || (abs(newDepthValue[j + (i+10)*640] - depthValue[j + (i+10)*640]) > 20) || (abs(newDepthValue[j + (i-10)*640] - depthValue[j + (i-10)*640]) > 20) ) ) {
-          changedPixels.append(int(j*2 + offsetX + (i*640)*1024/480+offsetY*1280));
+          changedPixels.append(j*2 + offsetX + (i*2+offsetY)*1280);
           kinectWindow.pixels[j+i*640] = (#00ff00);
-          pixels[int(j*2 + offsetX + (i*640)*1024/480+offsetY*1280)] = (#00ff00);
         }
         else{
           kinectWindow.pixels[j+i*640] = (#000000);
-          pixels[int(j*2 + offsetX + (i*640)*1024/480+offsetY*1280)] = (#000000);
         }
       }
     }
@@ -400,7 +410,7 @@ void draw() {
     kinectWindow.updatePixels();
     changedPixels.sort();
     if (changedPixels.size() > 0) {
-      if (millis() - timer > 5000) {
+      if (millis() - timer > 1000) {
         for (int k = 0; k < changedPixels.size(); k++) {
           if (usedPixels.hasValue(changedPixels.get(k))) {
             widgetMoved = false;
@@ -518,15 +528,15 @@ void draw() {
         widgetMoved = true;
         break;
       }
-      println(loops + " Cannot destory");
-      for (int i = uiY; i < uiY + uiHeight; i++) {
+      println(loops + " Cannot destroy");
+      for (int i = uiY; i < uiY + uiHeight; i+=10) {
         if (widgetMoved == true) {
+          println("breaking2");
           break;
         }
-        for (int j = uiX; j < uiX+uiWidth; j++) {
+        for (int j = uiX; j < uiX+uiWidth; j+=10) {
           movePixel = j+ i *1280;
-          if (!usedPixels.hasValue(movePixel) && !usedPixels.hasValue(movePixel + 40 + movingWidgetWidth) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetWidth + movingWidgetHeight * 1280) && !usedPixels.hasValue(movePixel+ movingWidgetHeight * 1280) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetWidth + movingWidgetHeight * 640) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetHeight * 640)) {
-            
+          if (!usedPixels.hasValue(movePixel) && !usedPixels.hasValue(movePixel + 40 + movingWidgetWidth) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetWidth + movingWidgetHeight * 1280) && !usedPixels.hasValue(movePixel+ movingWidgetHeight * 1280) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetWidth + movingWidgetHeight * 640) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetHeight * 640) /*&& !usedPixels.hasValue(movePixel + 40 + movingWidgetWidth/2) && !usedPixels.hasValue(movePixel+ 40 + movingWidgetWidth/2 + movingWidgetHeight * 1280)*/) {
             switch(movingWidget) {
             case 'c':
               clockInfo[4] = j;
@@ -550,19 +560,21 @@ void draw() {
             println(movingWidget + " Move Successful");
             widgetMoved = true;
             clockWindow.getSurface().setSize(clockInfo[6], clockInfo[7]);
-            clockWindow.setLocation(clockInfo[4] + 1920, clockInfo[5]);
+            setLocationSmooth(clockWindow.getSurface(), clockInfo[4] + 1920, clockInfo[5], 500);
             
             weatherWindow.getSurface().setSize(weather1Info[6], weather1Info[7]);
-            weatherWindow.setLocation(weather1Info[4] + 1920, weather1Info[5]);
+            setLocationSmooth(weatherWindow.getSurface(), weather1Info[4] + 1920, weather1Info[5], 500);
 
             calendarWindow.getSurface().setSize(calendarInfo[6], calendarInfo[7]);
-            calendarWindow.setLocation(calendarInfo[4] + 1920, calendarInfo[5]);
+            setLocationSmooth(calendarWindow.getSurface(), calendarInfo[4] + 1920, calendarInfo[5], 500);
             getUsedPixels();
             break;
           }
         }
       }
       if (widgetMoved == true) {
+        println("breaking");
+        movingWidget = ' ';
         break;
       }
       println(loops + " Cannot move");
@@ -610,6 +622,7 @@ void draw() {
         }
         getUsedPixels();
       }  
+      
       if (shrinkAll) {
         println("Shrink All");
         clockInfo[7] = int(clockInfo[7] * 0.8);
@@ -638,17 +651,17 @@ void draw() {
         }
       } else  if (shrinkAll && widgetSNM) { 
         shrinkAllMore = true;
-      }
+      } 
     }
     loops = 0;
   } else if (true1 == true) {
     stroke(#ffffff);
     fill(#ffffff);
-    ellipse((firstCorner%640)*2 + offsetX, (firstCorner-(firstCorner%640))/640*2.1333, 10, 10 + offsetY); //draws first ellipse
+    ellipse((firstCorner%640)*2 + offsetX, (firstCorner-(firstCorner%640))/1280, 10, 10 + offsetY); //draws first ellipse
   } else if (true2 == true) {
     stroke(#ffffff);
     fill(#ffffff);
-    ellipse((secondCorner%640)*2 + offsetX, int((secondCorner-(secondCorner%640))/640*2.1333) + offsetY, 10, 10); //draws second ellipse
+    ellipse((secondCorner%640)*2 + offsetX, int((secondCorner-(secondCorner%640))/1280) + offsetY, 10, 10); //draws second ellipse
   } else {
     background(0);
     stroke(#ffffff);
@@ -663,24 +676,27 @@ public void createWindows() {
   clockWindow.setVisible(false);
   clockWindow.setAlwaysOnTop(true);
   clockWindow.addDrawHandler(this, "clockDraw");
+  clockWindow.frameRate(4);
 
 
   weatherWindow = GWindow.getWindow(this, "Weather", 0, 0, 25, 25, JAVA2D);
   weatherWindow.setAlwaysOnTop(true);
   weatherWindow.setVisible(false);
   weatherWindow.addDrawHandler(this, "weatherDraw");
+  weatherWindow.frameRate(1);
 
   calendarWindow = GWindow.getWindow(this, "Calendar", 0, 0, 10, 10, JAVA2D);
   calendarWindow.setAlwaysOnTop(true);
   calendarWindow.setVisible(false);
   calendarWindow.addDrawHandler(this, "calendarDraw");
+  calendarWindow.frameRate(1);
 
   newsWindow = GWindow.getWindow(this, "News", 0, 0, 10, 10, JAVA2D);
-  newsWindow.setAlwaysOnTop(true);
+  newsWindow.setAlwaysOnTop(true); 
   newsWindow.setVisible(false);
   newsWindow.addDrawHandler(this, "newsDraw");
 
-  kinectWindow = GWindow.getWindow(this, "Kinect", 0, 0, 640, 480, JAVA2D);
+  kinectWindow = GWindow.getWindow(this, "Kinect", 0, 0, 640, 480, JAVA2D);   
   kinectWindow.addDrawHandler(this, "kinectDraw");
 }
 

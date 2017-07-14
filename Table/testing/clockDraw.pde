@@ -58,6 +58,9 @@ public void clockDraw(PApplet appc, GWinData data) {
   } else {
     formattedHour = hour();
     amPm = " AM";
+    if (hour() == 12) {
+      amPm = " PM";
+    }
   }
   
   if (minute() < 10) {
